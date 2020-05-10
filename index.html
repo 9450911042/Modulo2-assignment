@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <center><h1 style="font-size:50px;">Shopping List Check Off</h1></center><hr>
+        <div class="row">
+            <!-- To Buy List -->
+            <div class="col-md-6" ng-controller="ToBuyController as toBuyList">
+                <h2>To Buy:</h2>
+                <ul>
+
+                    <li ng-repeat="item in toBuyList.items" style="color:brown;font-size:20px;">Buy {{item.quantity}} {{item.name}}    :
+                      <button class="btn btn-default" ng-click="toBuyList.buyItem($index)" style="background-color:green;color:white;"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+                   </li>
+                </ul>
+                <div ng-if="toBuyList.items.length == 0" style="color:red;">Everything is bought!</div>
+            </div>
+            <!-- Already Bought List -->
+            <div class="col-md-6" ng-controller="AlreadyBoughtController as alreadyBoughtList">
+                <h2>Already Bought:</h2>
+                <ul>
+                    <li ng-repeat="item in alreadyBoughtList.items" style="color:brown;font-size:20px;">Bought {{item.quantity}} {{item.name}}</li>
+                </ul>
+                <div ng-if="alreadyBoughtList.items.length == 0" style="color:red;">Nothing bought yet.</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
